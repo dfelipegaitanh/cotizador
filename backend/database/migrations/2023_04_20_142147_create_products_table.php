@@ -10,15 +10,16 @@ return new class extends Migration {
      */
     public function up() : void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->foreignId('role_id')->constrained()->onDelete('set null');
-            $table->rememberToken();
+            $table->decimal('price', 10, 2);
+            $table->text('description')->nullable();
             $table->timestamps();
+
+            $table->foreignId('product_type_id')->constrained();
+            $table->foreignId('brand_id')->constrained();
+            $table->foreignId('category_id')->constrained('product_categories');
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration {
      */
     public function down() : void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('products');
     }
 };
