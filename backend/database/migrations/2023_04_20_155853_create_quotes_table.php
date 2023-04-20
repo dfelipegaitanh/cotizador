@@ -14,7 +14,6 @@ return new class extends Migration {
 
             $table->id();
             $table->decimal('general_quote', 10, 2)->nullable();
-            $table->timestamps();
             $table->foreignId('user_id')
                   ->nullable()
                   ->constrained()

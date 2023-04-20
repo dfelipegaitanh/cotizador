@@ -14,7 +14,6 @@ return new class extends Migration {
             $table->id();
 
             $table->string('reference');
-            $table->unsignedBigInteger('color_id');
             $table->decimal('price', 10, 2);
 
             $table->foreignId('quote_id')->constrained()->onDelete('cascade');

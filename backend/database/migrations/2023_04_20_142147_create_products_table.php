@@ -15,11 +15,11 @@ return new class extends Migration {
             $table->string('name');
             $table->decimal('price', 10, 2);
             $table->text('description')->nullable();
-            $table->timestamps();
 
             $table->foreignId('product_type_id')->constrained();
             $table->foreignId('brand_id')->constrained();
             $table->foreignId('category_id')->constrained('product_categories');
+            $table->timestamps();
         });
     }
 
