@@ -4,12 +4,13 @@ services:
   mariadb:
     image: docker.io/bitnami/mariadb:10.6
     environment:
-      # ALLOW_EMPTY_PASSWORD is recommended only for development.
       - ALLOW_EMPTY_PASSWORD=no
       - MARIADB_DATABASE=${MYSQL_DATABASE}
       - MARIADB_USER=${MYSQL_USER}
       - MARIADB_PASSWORD=${MYSQL_PASSWORD}
       - MARIADB_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - 'mariadb_data:/bitnami/mariadb'
 
   backend:
     image: docker.io/bitnami/laravel:10
@@ -33,3 +34,6 @@ services:
       - './front:/app'
       - '/app/node_modules'
     working_dir: /app
+
+volumes:
+  mariadb_data:
