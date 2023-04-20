@@ -27,8 +27,6 @@ services:
 
   frontend:
     build: ./front
-    image: node:14
-    command: sh -c "npm install && ng serve --host 0.0.0.0 --disable-host-check"
     ports:
       - '4200:4200'
     volumes:
